@@ -11,7 +11,8 @@ const app = express();
 
 // Set up CORS middleware before defining routes
 app.use(cors({
-  origin: 'http://localhost:3000' // Allow requests from your frontend's localhost address
+  origin: ['http://localhost:3000'], // Allow requests from your frontend's localhost address
+  credentials: true,
 }));
 
 app.use(express.json());
