@@ -32,7 +32,7 @@ function Sidebar() {
                             <Link to="/dashboard" className="text-white hover:text-green-700"><i className="fa-solid fa-house mr-2"></i>Dashboard</Link>
                         </li>
                         <li className="mb-2 border-b border-gray-700 p-2">
-                            <Link to="/students" className="text-white hover:text-green-700"><i className="fa-solid fa-user mr-2"></i>Students</Link>
+                            <Link to="/studentpage" className="text-white hover:text-green-700"><i className="fa-solid fa-user mr-2"></i>Students</Link>
                         </li>
                         <li className="mb-2 border-b border-gray-700 p-2">
                             <Link to="/course" className="text-white hover:text-green-700"><i className="fa-solid fa-bookmark mr-2"></i>Course</Link>

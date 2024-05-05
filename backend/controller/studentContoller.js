@@ -1,5 +1,6 @@
 
 const Student = require('../model/studentModel');
+const Subject =require('../model/subjectModel')
 
 // Get all students
 const getAllStudents = async (req, res) => {
@@ -27,8 +28,8 @@ const getStudentById = async (req, res) => {
 // Create a student with subjects
 const createStudentWithSubjects = async (req, res) => {
     try {
-        // Extract student details from request body
-        const { fname, lname, course, yearlevel, status, email, password, subjects } = req.body;
+        // Extract student details and subjects from request body
+        const { fname, lname, course, block, yearlevel, status, email, password, subjects } = req.body;
 
         // Check if subjects array is provided
         if (!Array.isArray(subjects)) {
@@ -41,17 +42,12 @@ const createStudentWithSubjects = async (req, res) => {
             return res.status(400).json({ success: false, message: 'One or more subjects do not exist' });
         }
 
-        // Check if any of the subjects already exist for the student
-        const studentSubjects = await Student.findOne({ subjects: { $in: subjects } });
-        if (studentSubjects) {
-            return res.status(400).json({ success: false, message: 'One or more subjects already exist for the student' });
-        }
-
         // Create the student
         const student = new Student({
             fname,
             lname,
             course,
+            block,
             yearlevel,
             status,
             email,
@@ -68,7 +64,6 @@ const createStudentWithSubjects = async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error' });
     }
 };
-
 
 
 // Update a student by ID
