@@ -12,10 +12,10 @@ const getAllStudents = async (req, res) => {
     }
 };
 
-// Get a single student by ID
+// Get a single student by ID with populated subjects
 const getStudentById = async (req, res) => {
     try {
-        const student = await Student.findById(req.params.id);
+        const student = await Student.findById(req.params.id).populate('subjects');
         if (!student) {
             return res.status(404).json({ success: false, message: 'Student not found' });
         }
@@ -24,6 +24,7 @@ const getStudentById = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
 
 // Create a student with subjects
 const createStudentWithSubjects = async (req, res) => {

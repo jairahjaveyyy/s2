@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function AddStudentForm() {
+function UpdateStudent() {
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [course, setCourse] = useState('BSIT');
@@ -43,7 +43,7 @@ function AddStudentForm() {
             subjects: selectedSubjects
         };
         try {
-            await axios.post('/students/create', newStudent);
+            await axios.post('/students/update/:id', newStudent);
             setFname('');
             setLname('');
             setCourse('BSIT');
@@ -144,4 +144,4 @@ function AddStudentForm() {
     );
 }
 
-export default AddStudentForm;
+export default UpdateStudent;

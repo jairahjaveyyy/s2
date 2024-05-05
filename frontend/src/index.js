@@ -11,6 +11,7 @@ import LoginForm from './pages/loginForm';
 import Dashboard from './pages/Dashboard';
 import StudentPage from './pages/StudentPage';
 import AddStudentForm from './components/AddStudentForm';
+import ViewStudent from './components/ViewStudent';
 
 
 const router = createBrowserRouter ([
@@ -33,7 +34,11 @@ const router = createBrowserRouter ([
   {
     path: "/addstudent",
     element: <AddStudentForm/>
-    }
+    },
+    {
+      path: "/viewstudent/:id",
+      element: <ViewStudent/>
+      }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

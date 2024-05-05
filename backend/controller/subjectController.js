@@ -1,4 +1,3 @@
-
 const Subject = require('../model/subjectModel');
 
 // Get all subjects
@@ -26,17 +25,17 @@ const getSubjectById = async (req, res) => {
 
 const createSubject = async (req, res) => {
     try {
-        const { name, description } = req.body;
+        const { code, subjectname, units, year, prerequisite } = req.body;
 
-        // Check if a subject with the same name already exists
-        const existingSubject = await Subject.findOne({ name });
+        // Check if a subject with the same code already exists
+        const existingSubject = await Subject.findOne({ code });
 
         if (existingSubject) {
             return res.status(400).json({ success: false, message: 'Subject already exists' });
         }
 
         // Create the subject
-        const subject = new Subject({ name, description });
+        const subject = new Subject({ code, subjectname, units, year, prerequisite });
         await subject.save();
 
         res.status(201).json({ success: true, message: 'Subject created', data: subject });
